@@ -2,7 +2,7 @@
 set -e
 
 # Get the container ID of the running container
-containerid=$(docker ps -q --filter "name=dreamy_darwin")
+containerid=$(sudo docker ps -q --filter "name=dreamy_darwin")
 
 # Check if a container ID was found
 if [ -z "$containerid" ]; then
@@ -10,6 +10,6 @@ if [ -z "$containerid" ]; then
 else
   # Stop the container if it's running
   echo "Stopping container with ID: $containerid"
-  docker stop "$containerid"
+  sudo docker stop "$containerid"
 fi
 
