@@ -1,5 +1,15 @@
 #!/bin/bash
 set -e
 
-# Stop the running container (if any)
-echo "HI"
+# Get the container ID of the running container
+containerid=$(docker ps -q --filter "name=dreamy_darwin")
+
+# Check if a container ID was found
+if [ -z "$containerid" ]; then
+  echo "No running container found with the name 'dreamy_darwin'."
+else
+  # Stop the container if it's running
+  echo "Stopping container with ID: $containerid"
+  docker stop "$containerid"
+fi
+
